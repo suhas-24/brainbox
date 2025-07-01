@@ -1,29 +1,49 @@
-# AI Forge Workspace
+# 🧠 BrainBox
 
-**TL;DR: Clone this to quickly build AI apps instead of starting from scratch every time.**
+**Production-ready AI application framework that acts like a complete AI brain in a box.**
 
-## What This Is
+[![GitHub](https://img.shields.io/github/license/suhas-24/brainbox)](https://github.com/suhas-24/brainbox)
+[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com/)
 
-A collection of **ready-to-use templates and tools** for building AI applications. Think of it as your "starter pack" for any AI project.
+## 🚀 What Is BrainBox?
 
-## Why You'd Want This
+BrainBox is a **complete AI application framework** that provides:
+- 🧠 **Intelligent Memory** - Remembers conversations across sessions
+- 🔄 **Multi-Provider Support** - OpenAI, Anthropic, Google with automatic fallback
+- 🏭 **Production-Ready API** - FastAPI server with comprehensive endpoints
+- ⚡ **Advanced Caching** - Memory and Redis support for performance
+- 🛡️ **Rate Limiting** - Built-in protection and usage control
+- 💰 **Real-time Cost Tracking** - Monitor token usage and costs
+- 🔍 **Semantic Search** - Vector memory for intelligent context retrieval
+- 📊 **Usage Analytics** - Track performance and optimize usage
+- 🤖 **Multi-Agent Coordination** - Orchestrate multiple AI agents
 
-**Instead of this every time you start an AI project:**
+## ⚡ Quick Start (2 minutes)
+
+**1. Clone and Setup:**
 ```bash
-# Start from scratch again...
-mkdir my-new-ai-app
-cd my-new-ai-app
-# Spend 2-3 hours setting up basic LLM integration
-# Write boilerplate for API keys, error handling, etc.
-# Figure out how to structure the project
+git clone https://github.com/suhas-24/brainbox.git
+cd brainbox
+pip install -r common/project-templates/llm-app-template/requirements.txt
 ```
 
-**You do this:**
+**2. Try the Personal Code Reviewer:**
 ```bash
-git clone [this-repo]
-cd ai-forge-workspace
-./scripts/create_project.sh my-new-ai-app
-# Start building your actual features immediately
+cd projects/personal-code-reviewer
+cp .env.example .env
+# Add your OpenAI API key to .env
+python demo.py
+```
+
+**3. Start the Production API Server:**
+```bash
+# From the root directory
+cd common/project-templates/llm-app-template
+cp .env.example .env
+# Add your API keys to .env
+python server.py
+# Visit http://localhost:8000/docs for API documentation
 ```
 
 ## What You Get When You Clone This
