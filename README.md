@@ -19,31 +19,33 @@ BrainBox is a **complete AI application framework** that provides:
 - 📊 **Usage Analytics** - Track performance and optimize usage
 - 🤖 **Multi-Agent Coordination** - Orchestrate multiple AI agents
 
-## ⚡ Quick Start (2 minutes)
+## ⚡ Quick Start (1 minute)
 
-**1. Clone and Setup:**
+**Try the simplest example first:**
 ```bash
 git clone https://github.com/suhas-24/brainbox.git
-cd brainbox
-pip install -r common/project-templates/llm-app-template/requirements.txt
-```
-
-**2. Try the Personal Code Reviewer:**
-```bash
-cd projects/personal-code-reviewer
+cd brainbox/examples/simple-chatbot
+pip install -r requirements.txt
 cp .env.example .env
 # Add your OpenAI API key to .env
-python demo.py
+python main.py
 ```
 
-**3. Start the Production API Server:**
+**That's it!** You now have a working AI chatbot. 
+
+**Want more features?** Try these:
+
+**🔥 Production API Server:**
 ```bash
-# From the root directory
-cd common/project-templates/llm-app-template
-cp .env.example .env
-# Add your API keys to .env
-python server.py
-# Visit http://localhost:8000/docs for API documentation
+cd ../../common/project-templates/llm-app-template
+cp .env.example .env && python server.py
+# Visit http://localhost:8000/docs
+```
+
+**🛠️ Code Reviewer Demo:**
+```bash
+cd ../../projects/personal-code-reviewer
+cp .env.example .env && python demo.py
 ```
 
 ## What You Get When You Clone This
