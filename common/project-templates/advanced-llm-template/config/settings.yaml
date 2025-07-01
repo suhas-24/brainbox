@@ -1,0 +1,354 @@
+# =================================================================
+# AI FORGE ADVANCED LLM TEMPLATE - APPLICATION SETTINGS
+# =================================================================
+
+app:
+  name: "Advanced LLM Application"
+  version: "1.0.0"
+  description: "Production-ready advanced LLM application with multi-modal capabilities"
+  debug: true
+  
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: true
+  log_level: "info"
+  cors:
+    enabled: true
+    origins:
+      - "http://localhost:3000"
+      - "http://localhost:8080"
+      - "https://yourdomain.com"
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    headers: ["*"]
+    credentials: true
+  
+# Database Configuration
+database:
+  # Primary database (PostgreSQL for production)
+  primary:
+    driver: "postgresql"
+    host: "localhost"
+    port: 5432
+    database: "ai_forge_db"
+    username: "postgres"
+    password: "password"
+    pool_size: 10
+    max_overflow: 20
+    echo: false
+    
+  # Development database (SQLite)
+  sqlite:
+    driver: "sqlite"
+    path: "./data/app.db"
+    echo: false
+    
+  # Connection settings
+  connection:
+    pool_timeout: 30
+    pool_recycle: 3600
+    pool_pre_ping: true
+
+# Cache Configuration
+cache:
+  # Redis cache
+  redis:
+    enabled: true
+    host: "localhost"
+    port: 6379
+    db: 0
+    password: null
+    ssl: false
+    socket_timeout: 5
+    socket_connect_timeout: 5
+    max_connections: 20
+    
+  # Memory cache
+  memory:
+    enabled: true
+    max_size: 1000
+    ttl: 3600
+    
+  # Cache policies
+  policies:
+    default_ttl: 3600
+    max_ttl: 86400
+    enable_compression: true
+
+# Vector Database Configuration
+vector_db:
+  # Primary vector database
+  primary:
+    provider: "chromadb"  # chromadb, pinecone, weaviate
+    host: "localhost"
+    port: 8000
+    collection_name: "ai_forge_embeddings"
+    
+  # Pinecone configuration
+  pinecone:
+    environment: "us-west1-gcp-free"
+    index_name: "ai-forge-index"
+    dimension: 1536
+    metric: "cosine"
+    
+  # Weaviate configuration
+  weaviate:
+    url: "http://localhost:8080"
+    class_name: "Document"
+    
+  # ChromaDB configuration
+  chromadb:
+    persist_directory: "./data/chromadb"
+    host: "localhost"
+    port: 8000
+
+# Security Configuration
+security:
+  # JWT settings
+  jwt:
+    secret_key: "your-super-secure-secret-key-change-this"
+    algorithm: "HS256"
+    expiration_hours: 24
+    refresh_expiration_days: 7
+    
+  # Rate limiting
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 1000
+    requests_per_hour: 10000
+    burst_allowance: 50
+    
+  # CORS
+  cors:
+    enabled: true
+    allow_credentials: true
+    
+  # Content security
+  content_security:
+    max_request_size: "50MB"
+    max_file_size: "25MB"
+    allowed_file_types:
+      - ".pdf"
+      - ".txt"
+      - ".docx"
+      - ".csv"
+      - ".json"
+      - ".md"
+
+# Feature Flags
+features:
+  agents:
+    enabled: true
+    max_iterations: 10
+    timeout_seconds: 300
+    
+  rag:
+    enabled: true
+    chunk_size: 1000
+    chunk_overlap: 200
+    max_documents: 10000
+    
+  multimodal:
+    enabled: true
+    image_processing: true
+    audio_processing: true
+    video_processing: false
+    
+  web_search:
+    enabled: true
+    max_results: 10
+    timeout_seconds: 30
+    
+  code_interpreter:
+    enabled: true
+    timeout_seconds: 60
+    sandbox: true
+
+# Agent Configuration
+agents:
+  # Default agent settings
+  default:
+    max_iterations: 10
+    timeout: 300
+    memory_limit: 50
+    
+  # Planner agent
+  planner:
+    model: "primary"
+    temperature: 0.3
+    max_tokens: 2000
+    
+  # Executor agent
+  executor:
+    model: "primary"
+    temperature: 0.1
+    max_tokens: 4000
+    
+  # Coordinator agent
+  coordinator:
+    model: "primary"
+    temperature: 0.5
+    max_tokens: 3000
+
+# Memory Configuration
+memory:
+  # Short-term memory
+  short_term:
+    enabled: true
+    max_messages: 100
+    ttl: 3600
+    
+  # Long-term memory
+  long_term:
+    enabled: true
+    storage: "database"  # database, redis, file
+    max_entries: 10000
+    
+  # Vector memory
+  vector:
+    enabled: true
+    dimension: 1536
+    similarity_threshold: 0.7
+
+# Retrieval Configuration
+retrieval:
+  # Vector search
+  vector_search:
+    top_k: 10
+    similarity_threshold: 0.7
+    rerank: true
+    
+  # Hybrid search
+  hybrid_search:
+    enabled: true
+    vector_weight: 0.7
+    keyword_weight: 0.3
+    
+  # Document processing
+  document_processing:
+    chunk_size: 1000
+    chunk_overlap: 200
+    max_file_size: "25MB"
+    extract_metadata: true
+
+# Monitoring Configuration
+monitoring:
+  # Metrics
+  metrics:
+    enabled: true
+    port: 9090
+    path: "/metrics"
+    
+  # Health checks
+  health_checks:
+    enabled: true
+    interval: 30
+    timeout: 10
+    
+  # Logging
+  logging:
+    level: "INFO"
+    format: "json"
+    file: "./logs/app.log"
+    rotation: "daily"
+    retention: 30
+    
+  # Tracing
+  tracing:
+    enabled: false
+    service_name: "ai-forge-app"
+    endpoint: "http://localhost:14268/api/traces"
+
+# Performance Configuration
+performance:
+  # Async settings
+  async:
+    max_workers: 10
+    timeout: 300
+    
+  # Connection pooling
+  connection_pool:
+    max_connections: 100
+    max_keepalive: 20
+    keepalive_expiry: 300
+    
+  # Request limits
+  limits:
+    max_concurrent_requests: 100
+    request_timeout: 300
+    max_retries: 3
+
+# Development Configuration
+development:
+  # Auto-reload
+  auto_reload: true
+  
+  # Debug mode
+  debug: true
+  
+  # Testing
+  testing:
+    mock_external_apis: false
+    test_database: "sqlite:///./test.db"
+    
+  # Profiling
+  profiling:
+    enabled: false
+    output_dir: "./profiles"
+
+# Deployment Configuration
+deployment:
+  environment: "development"  # development, staging, production
+  platform: "local"  # local, docker, kubernetes, cloud
+  
+  # Health checks
+  health:
+    startup_timeout: 60
+    liveness_timeout: 30
+    readiness_timeout: 30
+  
+  # Graceful shutdown
+  shutdown:
+    timeout: 30
+    force_timeout: 60
+
+# External Services Configuration
+external_services:
+  # Web search
+  web_search:
+    provider: "serper"  # serper, serpapi, google
+    timeout: 30
+    max_results: 10
+    
+  # News API
+  news_api:
+    timeout: 30
+    max_articles: 20
+    
+  # Social media
+  social_media:
+    twitter:
+      timeout: 30
+    youtube:
+      timeout: 60
+
+# Error Handling
+error_handling:
+  # Global error handling
+  global:
+    log_errors: true
+    return_stack_trace: false
+    
+  # Retry configuration
+  retry:
+    max_attempts: 3
+    base_delay: 1
+    max_delay: 60
+    backoff_factor: 2
+    
+  # Circuit breaker
+  circuit_breaker:
+    failure_threshold: 5
+    timeout: 60
+    half_open_max_calls: 3

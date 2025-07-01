@@ -1,0 +1,89 @@
+# Core AI/ML frameworks
+openai>=1.3.0
+anthropic>=0.7.0
+google-generativeai>=0.3.0
+transformers>=4.30.0
+torch>=2.0.0
+sentence-transformers>=2.2.0
+
+# Web framework and API
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.4.0
+pydantic-settings>=2.0.0
+
+# Database and storage
+sqlalchemy>=2.0.0
+alembic>=1.12.0
+redis>=5.0.0
+chromadb>=0.4.0
+pinecone-client>=2.2.0
+weaviate-client>=3.24.0
+
+# Document processing
+langchain>=0.1.0
+langchain-community>=0.0.10
+pypdf2>=3.0.0
+python-docx>=0.8.0
+python-multipart>=0.0.6
+
+# Image and audio processing
+pillow>=10.0.0
+opencv-python>=4.8.0
+speechrecognition>=3.10.0
+pydub>=0.25.0
+whisper>=1.1.0
+
+# Monitoring and observability
+prometheus-client>=0.17.0
+structlog>=23.2.0
+sentry-sdk[fastapi]>=1.38.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.1
+requests>=2.31.0
+httpx>=0.25.0
+aiofiles>=23.2.0
+tenacity>=8.2.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+httpx>=0.25.0
+
+# Development tools
+black>=23.9.0
+flake8>=6.1.0
+mypy>=1.6.0
+isort>=5.12.0
+pre-commit>=3.5.0
+
+# Security and validation
+cryptography>=41.0.0
+passlib[bcrypt]>=1.7.0
+python-jose[cryptography]>=3.3.0
+
+# Async and concurrency
+asyncio-mqtt>=0.16.0
+celery>=5.3.0
+dramatiq[redis]>=1.15.0
+
+# CLI and configuration
+click>=8.1.0
+typer>=0.9.0
+rich>=13.6.0
+
+# Additional ML utilities
+numpy>=1.24.0
+pandas>=2.1.0
+scikit-learn>=1.3.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Web scraping and external APIs
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+newspaper3k>=0.2.8
